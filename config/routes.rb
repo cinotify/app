@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     get 'terms', to: 'legal#terms'
     get 'privacy', to: 'legal#privacy'
   end
+  namespace :api do
+    post 'notify', to: 'api#notify'
+  end
 end

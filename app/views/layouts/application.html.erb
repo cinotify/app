@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Starter</title>
+    <title>CI Notify</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,7 +11,7 @@
   <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container-fluid d-flex">
-        <a class="navbar-brand" href="<%= root_path %>">SaaS Starter</a>
+        <a class="navbar-brand" href="<%= root_path %>">CI Notify</a>
         <ul class="navbar-nav">
           <% if current_user %>
             <li class="nav-item"><%= link_to "Account", account_path, class: 'nav-link' %></li>
