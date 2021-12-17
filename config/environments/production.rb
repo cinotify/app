@@ -104,7 +104,7 @@ Rails.application.configure do
     :user_name => 'apikey',
     :password => Rails.application.credentials.sendgrid[:api_key],
     :enable_starttls_auto => true,
-    :domain => 'cinotify.cc'
+    :domain => 'heroku.com'
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options ={:host => 'https://www.cinotify.cc'}
