@@ -30,6 +30,11 @@ jobs:
         ruby-version: ['3.0']
 
     steps:
+    - uses: jshawl/cinotify-action@main
+      with:
+        to: 'jesse@jesse.sh'
+        subject: 'Building CINotify App'
+        body: 'just fyi'
     - uses: actions/checkout@v2
     - name: Set up Ruby
     # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
