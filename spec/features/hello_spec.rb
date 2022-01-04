@@ -5,7 +5,7 @@ RSpec.describe 'index page', type: :feature do
   describe 'root path' do
     it 'shows something' do
       visit root_path
-      expect(page).to have_content('My Awesome Product')
+      expect(page).to have_content('Notifications')
     end
   end
 end
