@@ -1,0 +1,15 @@
+.public {
+    padding: 2em 0;
+}
+
+.public h2 {
+    margin: 1em 0;
+}
+
+.public h3 {
+    margin-top: 2em;
+}
+
+.public hr {
+    margin: 3em;
+}
