@@ -1,7 +1,7 @@
 class Notification < ApplicationRecord
   belongs_to :user
   after_create :deliver
-
+  scope :recent, -> { order('created_at DESC').limit(10) }
   private
   def deliver
     content = SendGrid::Content.new(type: 'text/plain', value: body)
