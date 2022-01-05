@@ -30,7 +30,7 @@ jobs:
         ruby-version: ['3.0']
 
     steps:
-    - uses: jshawl/cinotify-action@main
+    - uses: @cinotify/github-action@main
       with:
         to: 'jesse@jesse.sh'
         subject: 'Building CINotify App'
