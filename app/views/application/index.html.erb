@@ -1,5 +1,16 @@
 <% if current_user %>
-  <pre>&lt;App /></pre>
+  <h2>Recent Notifications</h2>
+  <% if @notifications.any? %>
+  <% @notifications.each do |notification| %>
+    <div class='notification'>
+      <small><%= notification.to %> <time style='color:#aaa;'><%= notification.created_at %></time></small><br>
+      <strong><%= notification.subject %></strong><br>
+      <%= notification.body %>
+    </div>
+  <% end %>
+  <% else %>
+    <p>No recent notifications.</p>
+  <% end %>
 <% else %>
   <%= render 'public' %>
 <% end %>
