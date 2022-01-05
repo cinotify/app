@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resource :account do
     post 'subscribe', to: 'accounts#subscribe'
   end
+  get :docs, to: 'application#docs'
   namespace :legal do
     get 'terms', to: 'legal#terms'
     get 'privacy', to: 'legal#privacy'

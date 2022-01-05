@@ -4,4 +4,6 @@ class ApplicationController < ActionController::Base
       @notifications = current_user.notifications.recent
     end
   end
+  def docs
+  end
 end

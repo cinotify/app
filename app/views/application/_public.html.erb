@@ -4,19 +4,5 @@
   <p>Skip the DNS configuration and/or SMTP settings and get right to sending programmatic email.</p>
   <p>Send emails from any docker container that can make http requests with <code>curl</code>.</p>
   <hr/>
-  <h2>Get Started</h2>
-  <h3>GitHub actions</h3>
-  <p>Add the following yaml to any GitHub action workflow.</p>
-  <pre>uses: jshawl/cinotify-action@main
-with:
-  to: 'jesse@jesse.sh'
-  subject: 'building main'
-  body: 'This is a notification from GitHub actions.'</pre>
-  <h3>REST API</h3>
-  <pre>$ curl POST 'https://www.cinotify.cc/api/notify' \
---data-raw '{
-    "to": "jesse@jesse.sh",
-    "subject": "CI/CD Notification",
-    "body": "Configure this notification at https://www.cinotify.cc/"
-}'</pre>
+  <%= render "docs" %>
   </div>
