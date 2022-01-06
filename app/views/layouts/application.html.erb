@@ -16,11 +16,15 @@
 
       gtag('config', 'G-5KBR8EF5XW');
     </script>
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
       <div class="container-fluid d-flex">
-        <a class="navbar-brand" href="<%= root_path %>">CI Notify</a>
+        <a class="navbar-brand" href="<%= root_path %>">
+          <i class="em em-mega" aria-role="presentation" aria-label="CHEERING MEGAPHONE"></i>
+          CI Notify
+        </a>
         <ul class="navbar-nav">
             <li class="nav-item"><%= link_to "Docs", docs_path, class: 'nav-link' %></li>
           <% if current_user %>
