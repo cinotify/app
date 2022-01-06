@@ -6,11 +6,9 @@ RSpec.describe Api::ApiController, type: :controller do
     expect{
       post :notify, params:
         {
-          api: {
-            to: 'example@example.com',
-            subject: 'hello',
-            body: 'goodbye'
-          }
+          to: 'example@example.com',
+          subject: 'hello',
+          body: 'goodbye'
         }
     }.to change{Notification.count}.by(1)
   end
