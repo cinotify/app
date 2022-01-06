@@ -3,13 +3,9 @@
   <p>Add the following yaml to any GitHub action workflow.</p>
   <pre>uses: jshawl/cinotify-action@main
 with:
-  to: 'jesse@jesse.sh'
+  to: 'example@example.com'
   subject: 'building main'
   body: 'This is a notification from GitHub actions.'</pre>
   <h3>REST API</h3>
-  <pre>$ curl POST 'https://www.cinotify.cc/api/notify' \
---data-raw '{
-    "to": "jesse@jesse.sh",
-    "subject": "CI/CD Notification",
-    "body": "Configure this notification at https://www.cinotify.cc/"
-}'</pre>
+  <pre>$ curl --request POST 'https://www.cinotify.cc/api/notify' \
+-d "to=example@example.com&subject=building main&body=hello."</pre>
