@@ -1,13 +1,60 @@
 <h2>Account Details</h2>
 <p>Logged in as <%= current_user.email %></p>
 
+<br>
 <h2>Billing Details</h2>
+
+<p>You are currently on the <strong>free</strong> plan, which allows 25 notifications per month.</p>
+
+<p>So far this month you have sent <%= current_user.notifications_this_month_count %> notifications.</p>
+<br>
+<div class='row'>
+  <div class='col-sm-4'>
+    <div class='card border border-success'>
+      <div class='card-body'>
+        <h4 class='card-title'>
+          Free Plan
+        </h4>
+        <p>25 Notifications Per Month</p>
+        <p><strong>$0</strong> monthly</p>
+      </div>
+    </div>
+  </div>
+  <div class='col-sm-4'>
+    <div class='card'>
+      <div class='card-body'>
+        <h4 class='card-title'>
+          Basic Plan
+        </h4>
+        <p>250 Notifications Per Month</p>
+        <p><strong>$7</strong> monthly</p>
+        <%= form_tag subscribe_account_path(plan: 'basic') do |f| %>
+          <button id='checkout-button' class='btn btn-outline-primary'>Upgrade</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class='col-sm-4'>
+    <div class='card'>
+      <div class='card-body'>
+        <h4 class='card-title'>
+          Pro Plan
+        </h4>
+        <p>1000 Notifications Per Month</p>
+        <p><strong>$19</strong> monthly</p>
+        <%= form_tag subscribe_account_path(plan: 'pro') do |f| %>
+          <button id='checkout-button' class='btn btn-outline-primary'>Upgrade</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<h2>Looking for something else?</h2>
+<p>Contact us to find a custom solution for your notification needs.</p>
+
 <% if current_user.stripe_subscription_id %>
 <%= link_to "Edit Subscription", @portal %>
 <% else %>
-
-<%= form_tag subscribe_account_path do |f| %>
-  <button id='checkout-button' class='btn btn-outline-primary'>Subscribe to Metered Billing</button>
-<% end %>
 
 <% end %>
