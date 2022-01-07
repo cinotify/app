@@ -1,24 +1,30 @@
 <h2>Get Started</h2>
-  <h3><%= image_tag "github", style: 'width: 1em' %> GitHub Actions</h3>
-  <%= link_to "View on Marketplace", "https://github.com/marketplace/actions/cinotify-email", target: '_blank' %>
-  &middot;
-  <%= link_to "View Source", "https://github.com/cinotify/github-action", target: '_blank' %>
 
-    <p>Add the following yaml to any GitHub action workflow.</p>
-  <pre>uses: cinotify/github-action@main
-with:
-  to: 'example@example.com'
-  subject: 'building main'
-  body: 'This is a notification from GitHub actions.'</pre>
-
-<h3><%= image_tag "circleci", style: 'width: 1em' %> CircleCI</h3>
-<%= link_to "View on Orb Registry", "https://circleci.com/developer/orbs/orb/cinotify/email", target: '_blank' %>
-&middot;
-<%= link_to "View Source", "https://github.com/cinotify/circleci-orb", target: '_blank' %>
-
-<p>Add the following yaml to any CircleCI workflow.</p>
-<pre>orbs:
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+    <h3><%= image_tag "github", style: 'width: 1em' %> GitHub Actions</h3>
+    <%= link_to "View on Marketplace", "https://github.com/marketplace/actions/cinotify-email", target: '_blank' %>
+    &middot;
+    <%= link_to "View Source", "https://github.com/cinotify/github-action", target: '_blank' %>
+  
+      <p>Add the following yaml to any GitHub action workflow.</p>
+    <pre>uses: cinotify/github-action@main
+  with:
+    to: 'example@example.com'
+    subject: 'building main'
+    body: 'This is a notification from GitHub actions.'</pre>
+    </div>
+    <div class="col-md-6">
+    <h3><%= image_tag "circleci", style: 'width: 1em' %> CircleCI</h3>
+    <%= link_to "View on Orb Registry", "https://circleci.com/developer/orbs/orb/cinotify/email", target: '_blank' %>
+    &middot;
+    <%= link_to "View Source", "https://github.com/cinotify/circleci-orb", target: '_blank' %>
+    
+    <p>Add the following yaml to any CircleCI workflow.</p>
+    <pre>orbs:
   email: cinotify/email@1.2.0
+
 workflows:
   example-workflow:
     jobs:
@@ -26,8 +32,12 @@ workflows:
           body: 'Configure this notification at https://www.cinotify.cc/'
           subject: CircleCI job started
           to: example@example.com</pre>
-
-<h3><%= image_tag "npm", style: 'width: 1em' %> npm package (node.js)</h3>
+    
+      </div>
+    </div>
+<div class='row'>
+<div class='col-sm-6'>
+<h3><%= image_tag "npm", style: 'width: 1em' %> npm package</h3>
 <%= link_to "View on npm", "https://www.npmjs.com/package/@cinotify/js", target: '_blank' %>
 &middot;
 <%= link_to "View Source", "https://github.com/cinotify/js", target: '_blank' %>
@@ -39,12 +49,13 @@ email({
   body: 'Configure this notification at https://www.cinotify.cc/'
 })
 </pre>
-
+</div>
+<div class='col-sm-6'>
 <h3>REST API</h3>
 <%= link_to "View documentation", "/docs", target: '_blank' %>
 &middot;
 <%= link_to "View Source", "https://github.com/cinotify/app", target: '_blank' %>
 <pre>$ curl --request POST 'https://www.cinotify.cc/api/notify' \
   -d "to=example@example.com&subject=building main&body=hello."</pre>
-        
-        
+</div>
+</div>
