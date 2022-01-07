@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :notifications
+
+  def notifications_this_month_count
+    notifications.where('created_at > ?', Time.now.beginning_of_month).count
+  end
 end
