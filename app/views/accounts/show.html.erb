@@ -1,13 +1,8 @@
 <h2>Account Details</h2>
 <p>Logged in as <%= current_user.email %></p>
-
+<br>
 <h2>Billing Details</h2>
-<% if current_user.stripe_subscription_id %>
-<%= link_to "Edit Subscription", @portal %>
-<% else %>
+<p>You are currently on the <strong>free</strong> plan.</p>
+<p>We are currently building out pricing plans and payment systems. Thank you in advance for considering upgrading to a paid plan!</p>
 
-<%= form_tag subscribe_account_path do |f| %>
-  <button id='checkout-button' class='btn btn-outline-primary'>Subscribe to Metered Billing</button>
-<% end %>
-
-<% end %>
+<button class='btn btn-outline-secondary' disabled>Upgrade (Coming Soon)</button>

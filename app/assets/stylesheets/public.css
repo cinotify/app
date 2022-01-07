@@ -17,3 +17,9 @@
 .public p {
     margin: 1em 0;
 }
+
+.public h2,
+.public h3,
+.public h4 {
+    font-weight: 300;
+}
