@@ -1,12 +1,76 @@
-
-
-<div class='public'>
-  
-  <h2>Zero Configuration CI/CD Notifications</h2>
-  <p>CI Notify provides a container-friendly notification service that can be easily added to your CI/CD pipeline.</p>
-  <p>Skip the DNS configuration and/or SMTP settings and get right to sending programmatic email.</p>
-  <p>Send emails from any docker container that can make http requests with <code>curl</code>.</p>
-
-  <hr/>
+<div class="public">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Zero Configuration CI/CD Notifications</h2>
+            <p>
+                CI Notify provides a container-friendly notification service that can be easily added to your CI/CD pipeline.
+            </p>
+            <p>
+                Skip the DNS configuration and/or SMTP settings and get right to sending programmatic email.
+            </p>
+            <p>
+                Send emails from any docker container that can make http requests with
+                <code>curl</code>.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="demo">
+                <div class="step">
+                    <span class="icon"></span>
+                    <span>Test</span>
+                    <span class="time"></span>
+                </div>
+                <div class="step">
+                    <span class="icon"></span>
+                    <span>Deploy</span>
+                    <span class="time"></span>
+                </div>
+                <div class="step">
+                    <span class="icon"></span>
+                    <span><strong>Notify</strong>
+            <small>Email:
+              <a href="https://github.com/jshawl">@jshawl</a> successfully
+              deployed
+              <a href="https://github.com/cinotify"><code>8afcd3</code></a> to
+              production</small></span>
+                    <span class="time"></span>
+                </div>
+            </div>
+            <!-- demo -->
+        </div>
+    </div>
+    <!-- row -->
+    <hr />
     <%= render "docs" %>
-  </div>
+</div>
+
+<script>
+    let interval = 0;
+
+    function restart() {
+        const steps = [...document.querySelectorAll(".demo .step")];
+        steps.forEach((step) => {
+            step.classList.remove("success", "running");
+            step.querySelector(".time").innerHTML = "";
+        });
+        clearInterval(interval);
+
+        function start(steps) {
+            let i = 0;
+            const current = steps.shift();
+            current.classList.add("running");
+            interval = setInterval(() => {
+                current.querySelector(".time").innerHTML = ++i + "s";
+                if (Math.random() > 0.5 && i > 1) {
+                    current.classList.remove("running");
+                    current.classList.add("success");
+                    clearInterval(interval);
+                    if (steps.length) start(steps);
+                }
+            }, 1001);
+        }
+        start(steps);
+    }
+
+    restart();
+</script>
