@@ -1,1 +1,1 @@
-web: cd docs && jekyll build -d ../public/dox/ && cd - && bundle exec rails server -p $PORT
+web: cd docs && jekyll build -d ../public/docs/ && cd - && bundle exec rails server -p $PORT
