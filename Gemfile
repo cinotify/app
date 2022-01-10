@@ -24,6 +24,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem "jekyll", "~> 4.2.1"
+# This is the default theme for new Jekyll sites. You may change this to anything you like.
+gem "minima", "~> 2.5"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
