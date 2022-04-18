@@ -12,4 +12,13 @@ RSpec.describe Api::ApiController, type: :controller do
         }
     }.to change{Notification.count}.by(1)
   end
+  it 'rejects spammers' do
+    post :notify, params:
+      {
+        to: 'admin@psnator.com',
+        subject: 'hello',
+        body: 'goodbye'
+      }
+    expect(response.code).to eq("400")
+  end
 end
