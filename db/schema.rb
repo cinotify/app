@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_17_154948) do
+ActiveRecord::Schema.define(version: 2023_04_15_145356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "identities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "uid", null: false
+    t.string "provider", null: false
+    t.string "email"
+    t.string "token"
+    t.string "refresh_token"
+    t.integer "token_expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -25,11 +38,14 @@ ActiveRecord::Schema.define(version: 2021_12_17_154948) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "usages", force: :cascade do |t|
-    t.bigint "user_id", null: false
+  create_table "payments", force: :cascade do |t|
+    t.string "paypal_id"
+    t.bigint "user_id"
+    t.json "details"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_usages_on_user_id"
+    t.string "paypal_subscription_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,12 +56,14 @@ ActiveRecord::Schema.define(version: 2021_12_17_154948) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.boolean "is_admin", default: false, null: false
     t.string "stripe_customer_id"
     t.string "stripe_subscription_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "identities", "users"
   add_foreign_key "notifications", "users"
-  add_foreign_key "usages", "users"
 end

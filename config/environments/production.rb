@@ -104,7 +104,7 @@ Rails.application.configure do
     :port => '587',
     :authentication => :plain,
     :user_name => 'apikey',
-    :password => Rails.application.credentials.sendgrid[:api_key],
+    :password => Rails.application.credentials.sendgrid && Rails.application.credentials.sendgrid[:api_key],
     :enable_starttls_auto => true,
     :domain => 'heroku.com'
   }
