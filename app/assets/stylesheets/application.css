@@ -50,3 +50,8 @@ footer {
     color: #ccc;
     font-size: .8rem;
 }
+
+nav input {
+    background: none;
+    border: none;
+}
