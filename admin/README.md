@@ -32,3 +32,13 @@ ORDER BY notifications.created_at
 DESC
 LIMIT 20;
 ```
+
+### Recent Logins
+
+```sql
+SELECT users.email, users.updated_at
+FROM users
+ORDER BY users.updated_at
+DESC
+LIMIT 20;
+```
