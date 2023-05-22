@@ -11,6 +11,7 @@ class User < ApplicationRecord
   private
   def discord_webhook
     emoji = ["🥳","🎉","🙌","🎊"].sample
-    Discord.post_message("#{emoji} new signup! #{email}")
+    action = encrypted_password? ? "signup" : "activation"
+    Discord.post_message("#{emoji} new #{action}! #{email}")
   end
 end
