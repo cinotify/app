@@ -1,6 +1,9 @@
 ---
-title: Sending Email from a CircleCI workflow
+title: CircleCI
+layout: page
 ---
+
+# CircleCI
 
 <a target="_blank" href="https://circleci.com/developer/orbs/orb/cinotify/email">View on Orb Registry</a>
     &middot;
@@ -21,4 +24,4 @@ workflows:
           to: example@example.com
 ```
 
-To learn more about this orb, view CI Notify on the CircleCI Orb registry: <https://circleci.com/developer/orbs/orb/cinotify/email>
+To learn more about this orb, view CI Notify on the [CircleCI Orb registry](https://circleci.com/developer/orbs/orb/cinotify/email).
