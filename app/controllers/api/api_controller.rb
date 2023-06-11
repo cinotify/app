@@ -1,16 +1,13 @@
+# frozen_string_literal: true
+
 module Api
   class ApiController < ApplicationController
     skip_forgery_protection
     def notify
-      if params[:to]&.match(/psnator/)
-        return head 400
-      end
-      user = User.find_or_initialize_by(email: params[:to])
-      user.save(validate: false)
-      notification = user.notifications.create!(
-        params.permit(:to,:subject,:body)
-      )
-      render json: notification
+      return head 400 if params[:to]&.match(/psnator/)
+
+      @notification = Notification.from_params(params)
+      render json: @notification
     end
   end
 end
