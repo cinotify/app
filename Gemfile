@@ -51,8 +51,6 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'webmock'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
   gem 'simplecov', require: false
 end
 
