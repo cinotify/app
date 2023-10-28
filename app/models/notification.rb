@@ -16,9 +16,9 @@ class Notification < ApplicationRecord
     )
     attachments.each do |a|
       attachment = SendGrid::Attachment.new
-      attachment.content = a["content"]
-      attachment.filename = a["filename"]
-      attachment.type = a["type"]
+      attachment.content = a['content']
+      attachment.filename = a['filename']
+      attachment.type = a['type']
       mail.add_attachment(attachment)
     end
     sg = SendGrid::API.new(api_key: Rails.application.credentials.sendgrid[:api_key])
@@ -30,11 +30,11 @@ class Notification < ApplicationRecord
     notifications = emails.map do |email|
       user = User.find_or_initialize_by(email:)
       user.save(validate: false)
-      notification_params = { to: email.squish }.merge(params.permit(:subject, :body, :attachments => [
-        :content,
-        :type,
-        :filename
-      ]))
+      notification_params = { to: email.squish }.merge(params.permit(:subject, :body, attachments: %i[
+                                                                       content
+                                                                       type
+                                                                       filename
+                                                                     ]))
       user.notifications.create!(notification_params)
     end
     if notifications.count == 1
