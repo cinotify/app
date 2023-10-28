@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2023_10_28_141221) do
     t.boolean "is_admin", default: false, null: false
     t.string "stripe_customer_id"
     t.string "stripe_subscription_id"
-    t.boolean "marketing_opted_in", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
