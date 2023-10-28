@@ -30,11 +30,13 @@ class Notification < ApplicationRecord
     notifications = emails.map do |email|
       user = User.find_or_initialize_by(email:)
       user.save(validate: false)
-      notification_params = { to: email.squish }.merge(params.permit(:subject, :body, attachments: %i[
-                                                                       content
-                                                                       type
-                                                                       filename
-                                                                     ]))
+      notification_params = { to: email.squish }.merge(
+        params.permit(:subject, :body, attachments: %i[
+                        content
+                        type
+                        filename
+                      ])
+      )
       user.notifications.create!(notification_params)
     end
     if notifications.count == 1
