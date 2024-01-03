@@ -32,7 +32,7 @@ jobs:
     steps:
     - uses: cinotify/github-action@main
       with:
-        to: 'jesse@jesse.sh'
+        to: 'not an email address'
         subject: 'Building CINotify App'
         body: 'just fyi'
     - uses: actions/checkout@v2
