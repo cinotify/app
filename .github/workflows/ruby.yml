@@ -30,7 +30,7 @@ jobs:
         ruby-version: ['3.1.1']
 
     steps:
-    - uses: cinotify/github-action@error-messages
+    - uses: cinotify/github-action@main
       with:
         to: 'not an email address'
         subject: 'Building CINotify App'
