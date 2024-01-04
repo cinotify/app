@@ -6,7 +6,11 @@ module Api
     def notify
       return head 400 if params[:to]&.match(/psnator/)
 
-      @notification = Notification.from_params(params)
+      begin
+        @notification = Notification.from_params(params)
+      rescue => e
+         return render json: {error: e.message}, status: 400
+      end
       render json: @notification
     end
   end
