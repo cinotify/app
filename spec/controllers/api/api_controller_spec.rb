@@ -27,6 +27,16 @@ RSpec.describe Api::ApiController, type: :controller do
       }
     expect(response.code).to eq('400')
   end
+  it 'handles invalid email addresses' do
+    post :notify, params:
+    {
+      to: 'not a valid email address',
+      subject: 'hello',
+      body: 'goodbye'
+    }
+    expect(response.code).to eq('400')
+    expect(response.body).to match('email(.*)invalid')
+  end
   it 'supports multiple recipients' do
     stub_request(:post, 'https://api.sendgrid.com/v3/mail/send')
       .with(
