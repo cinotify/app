@@ -1,0 +1,69 @@
+<div class='public'>
+  <h1>CI Notify Documentation</h1>
+  <br>
+  <h2>Introduction</h2>
+  <p>
+    CI Notify provides a notification service for restricted tested environments with limited resources and permissions.
+    Typically, continuous integration tests and builds run within a docker container that does not have access to send mail over SMTP.
+    Additionally, this service provides a way to send notifications without leaking SMTP credentials of your company domain to a build environment.
+    </p>
+  <br>
+  <h2>Email Notifications</h2>
+  <p>Several packages have been published in order to simplify integrating CI Notify into your existing CI/CD pipeline.</p>
+  <p><a href='mailto: hello@cinotify.cc'>Contact us</a> if you'd like to see an integration not listed below.</p>
+
+    <div class="">
+    <h3><%= image_tag "github", style: 'width: 1em' %> GitHub Actions</h3>
+    <%= link_to "View on Marketplace", "https://github.com/marketplace/actions/cinotify-email", target: '_blank' %>
+    &middot;
+    <%= link_to "View Source", "https://github.com/cinotify/github-action", target: '_blank' %>
+  
+      <p>Add the following yaml to any GitHub action workflow.</p>
+    <pre><code class='language-yml'>uses: cinotify/github-action@main
+  with:
+    to: 'example@example.com'
+    subject: 'building main'
+    body: 'This is a notification from GitHub actions.'</code></pre>
+    </div>
+    <div class="">
+    <h3><%= image_tag "circleci", style: 'width: 1em' %> CircleCI</h3>
+    <%= link_to "View on Orb Registry", "https://circleci.com/developer/orbs/orb/cinotify/email", target: '_blank' %>
+    &middot;
+    <%= link_to "View Source", "https://github.com/cinotify/circleci-orb", target: '_blank' %>
+    
+    <p>Add the following yaml to any CircleCI workflow.</p>
+    <pre><code class='language-yml'>orbs:
+  email: cinotify/email@1.2.0
+
+workflows:
+  example-workflow:
+    jobs:
+      - email/send:
+          body: 'Configure this notification at https://www.cinotify.cc/'
+          subject: CircleCI job started
+          to: example@example.com</code></pre>
+      </div>
+    </div>
+
+<h3><%= image_tag "npm", style: 'width: 1em' %> npm package</h3>
+<%= link_to "View on npm", "https://www.npmjs.com/package/@cinotify/js", target: '_blank' %>
+&middot;
+<%= link_to "View Source", "https://github.com/cinotify/js", target: '_blank' %>
+<p>Open a terminal window and:</p>
+<pre><code class='language-txt'>$ npm install @cinotify/js</code></pre>
+<pre><code class='language-js'>const { email } = require("@cinotify/js")
+email({
+  to: 'example@example.com',
+  subject: 'Sending an email from node.js',
+  body: 'Configure this notification at https://www.cinotify.cc/'
+})</code></pre>
+<div class=''>
+<br>
+<h3>REST API</h3>
+<%= link_to "View documentation", "/docs", target: '_blank' %>
+&middot;
+<%= link_to "View Source", "https://github.com/cinotify/app", target: '_blank' %>
+<p>Use the api directly over http with <code>curl</code>:</p>
+<pre><code class='language-txt'>$ curl --request POST 'https://www.cinotify.cc/api/notify' \
+  -d "to=example@example.com&subject=building main&body=hello."</code></pre>
+</div>

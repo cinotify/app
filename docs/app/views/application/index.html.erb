@@ -1,0 +1,35 @@
+<% if current_user %>
+  <% if @notifications.any? %>
+  <h2>Recent Notifications</h2>
+  <% @notifications.each do |notification| %>
+    <div class='notification'>
+      <small><%= notification.to %> <time style='color:#aaa;'><%= notification.created_at %></time></small><br>
+      <strong><%= notification.subject %></strong><br>
+      <%= notification.body %>
+    </div>
+  <% end %>
+  <% else %>
+<h2>Welcome! 🥳</h2>
+<p>Programmatic email notifications just got a whole lot easier!</p>
+<h2>Try It Out</h2>
+<p>The easiest way to see what CI Notify can do is using the
+<a href="https://www.cinotify.cc/docs/http/">HTTP API</a>:</p>
+<pre><code contenteditable>curl --request POST 'https://www.cinotify.cc/api/notify' \
+  -d "to=example@example.com&subject=building main&body=hello."
+</code></pre>
+
+<p>👆 This snippet is <code>contenteditable</code>. Edit the email address and
+send your first email!
+</p>
+
+<h2>Integrate Your CI/CD Pipeline</h2>
+<p>We have yaml config for <a href="https://www.cinotify.cc/docs/github-actions/">GitHub Actions</a> and <a href="https://www.cinotify.cc/docs/circleci/">Circle CI</a>.
+There's also an <a href="https://www.npmjs.com/package/@cinotify/js">npm package</a> for sending email
+from a Node.js application.
+</p>
+
+<p>Curious about another integration? Let us know by email: <a href='mailto:help@cinotify.cc'>help@cinotify.cc</a></p>
+  <% end %>
+<% else %>
+  <%= render 'public' %>
+<% end %>

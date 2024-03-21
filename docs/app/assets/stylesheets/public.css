@@ -1,0 +1,95 @@
+.public {
+    padding: 2em 0;
+}
+
+.public h2 {
+    margin: 0 0;
+}
+
+.public h3 {
+    margin-top: 2em;
+}
+
+.public hr {
+    margin: 3em 0;
+}
+
+.public p {
+    margin: 1em 0;
+}
+
+.public h2,
+.public h3,
+.public h4 {
+    font-weight: 300;
+}
+
+.step {
+    position: relative;
+    border: 2px solid #ebebeb;
+    margin: 2em 0;
+    padding: .5em;
+    padding-right: 2em;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 1.5em;
+    z-index: 2;
+}
+
+.step:first-of-type {
+    margin-top: 0;
+}
+
+.step:after {
+    content: '';
+    display: block;
+    background: #ccc;
+    height: 80%;
+    width: 2px;
+    left: 50%;
+    top: 102%;
+    position: absolute;
+}
+
+.step:last-of-type:after {
+    display: none;
+}
+
+.step .icon {
+    background: #7B8C7F;
+    height: 1em;
+    width: 1em;
+    top: .5em;
+    left: .5em;
+    border-radius: 100%;
+    margin-right: 1em;
+}
+
+.time {
+    position: absolute;
+    right: 1em;
+    color: #666;
+    font-size: .8rem;
+}
+
+.step.running .icon {
+    background-color: #ffe947;
+}
+
+.step.success {
+    border-color: #2AA545;
+}
+
+.step.success .icon {
+    background-color: #2AA545;
+}
+
+small {
+    display: none;
+}
+
+.success small {
+    display: inline-block;
+}

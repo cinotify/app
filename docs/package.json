@@ -1,0 +1,11 @@
+{
+    "name": "starter",
+    "private": true,
+    "dependencies": {
+        "@rails/ujs": "^6.0.0"
+    },
+    "version": "0.1.0",
+    "devDependencies": {
+        "webpack-dev-server": "^3"
+    }
+}
